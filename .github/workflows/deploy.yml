@@ -26,17 +26,11 @@ jobs:
           token = ${{ secrets.DATABRICKS_TOKEN }}
           EOF
 
-      - name: Prepare workspace folder
+      - name: Sync files
         run: |
-          mkdir workspace
-          cp -r src workspace/
-          cp package.json workspace/
-          cp pnpm-lock.yaml workspace/
-          cp tsconfig*.json workspace/
-          cp nest-cli.json workspace/
-          cp app.yaml workspace/
+          databricks sync . /Workspace/Users/felipe.sousa@aliancadivergente.com.br/api-backoffice --full
 
       - name: Deploy app
         run: |
           databricks apps deploy api-backoffice \
-            --source-code-path ./workspace
+            --source-code-path /Workspace/Users/felipe.sousa@aliancadivergente.com.br/api-backoffice
