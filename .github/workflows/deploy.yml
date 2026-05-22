@@ -28,9 +28,9 @@ jobs:
 
       - name: Sync files
         run: |
-          databricks sync . /Workspace/Users/felipe.sousa@aliancadivergente.com.br/api-backoffice
+          databricks sync . /Workspace/Shared/api-backoffice
 
       - name: Deploy app
         run: |
           databricks apps deploy api-backoffice \
-            --source-code-path /Workspace/Users/felipe.sousa@aliancadivergente.com.br/api-backoffice
+            --source-code-path /Workspace/Shared/api-backoffice
